@@ -1,6 +1,9 @@
 package br.com.fiap.solestride.domain;
 import jakarta.persistence.*;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "TB_PRODUTO", uniqueConstraints = {
         @UniqueConstraint(name = "UK_COD_PRODUTO", columnNames = "COD_PRODUTO")
@@ -20,13 +23,28 @@ public class Produto {
     private String modelo;
     @Column(name = "FAB_PRODUTO", nullable = false)
     private String fabricante;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "TB_PRODUTO_FORNECEDOR",
+            joinColumns = {
+                    @JoinColumn(
+                            name = "ID_PRODUTO",
+                            referencedColumnName = "ID_PRODUTO",
+                            foreignKey = @ForeignKey(name = "FK_PRODUTO_FORNECEDOR")
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(
+                            name = "ID_FORNECEDOR",
+                            referencedColumnName = "ID_FORNECEDOR",
+                            foreignKey = @ForeignKey(name = "FK_FORNECEDOR_PRODUTO")
+                    )
+            }
+    )
+    private Set<Fornecedor> fornecedores = new LinkedHashSet<>();
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getNome() {
@@ -67,6 +85,11 @@ public class Produto {
 
     public void setFabricante(String fabricante) {
         this.fabricante = fabricante;
+    }
+
+    public Produto addFornecedor(Fornecedor forn) {
+        fornecedores.add(forn);
+        return this;
     }
 
     public Produto() {
