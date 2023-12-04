@@ -1,4 +1,4 @@
-package br.com.fiap.solestride.domain;
+package br.com.fiap.solestride.domain.entity;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "TB_FORNECEDOR", uniqueConstraints = {
@@ -12,13 +12,13 @@ public class Fornecedor {
     @Column(name = "NM_FORNECEDOR", nullable = false)
     private String nome;
     @Column(name = "CNPJ_FORNECEDOR", nullable = false)
-    private String CNPJ_for;
+    private String cnpj;
     @Column(name = "EMAIL_FORNECEDOR", nullable = false)
     private String email;
     @Column(name = "SENHA_FORNECEDOR", nullable = false)
     private String senha;
     @Column(name = "MTF_FORNECEDOR", nullable = false)
-    private String mod_tributario_form;
+    private String modTributarioFornecedor;
 
     public Long getId() {
         return id;
@@ -36,12 +36,12 @@ public class Fornecedor {
         this.nome = nome;
     }
 
-    public String getCNPJ_for() {
-        return CNPJ_for;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setCNPJ_for(String CNPJ_for) {
-        this.CNPJ_for = CNPJ_for;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getEmail() {
@@ -60,24 +60,24 @@ public class Fornecedor {
         this.senha = senha;
     }
 
-    public String getMod_tributario_form() {
-        return mod_tributario_form;
+    public String getModTributarioFornecedor() {
+        return modTributarioFornecedor;
     }
 
-    public void setMod_tributario_form(String mod_tributario_form) {
-        this.mod_tributario_form = mod_tributario_form;
+    public void setModTributarioFornecedor(String modTributarioFornecedor) {
+        this.modTributarioFornecedor = modTributarioFornecedor;
     }
 
     public Fornecedor() {
     }
 
-    public Fornecedor(Long id, String nome, String CNPJ_for, String email, String senha, String mod_tributario_form) {
+    public Fornecedor(Long id, String nome, String CNPJ_for, String email, String senha, String modTributarioFornecedor) {
         this.id = id;
         this.nome = nome;
-        this.CNPJ_for = CNPJ_for;
+        this.cnpj = CNPJ_for;
         this.email = email;
         this.senha = senha;
-        this.mod_tributario_form = mod_tributario_form;
+        this.modTributarioFornecedor = modTributarioFornecedor;
     }
 
     @Override
@@ -85,10 +85,10 @@ public class Fornecedor {
         return "Fornecedor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", CNPJ_for='" + CNPJ_for + '\'' +
+                ", cnpj='" + cnpj + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
-                ", mod_tributario_form='" + mod_tributario_form + '\'' +
+                ", modTributarioFonecedor='" + modTributarioFornecedor + '\'' +
                 '}';
     }
 }

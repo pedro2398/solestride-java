@@ -1,4 +1,4 @@
-package br.com.fiap.solestride.domain;
+package br.com.fiap.solestride.domain.entity;
 import jakarta.persistence.*;
 
 import java.util.LinkedHashSet;
@@ -16,7 +16,7 @@ public class Produto {
     @Column(name = "NM_NOME", nullable = false)
     private String nome;
     @Column(name = "COD_PRODUTO", nullable = false)
-    private String cod_produto;
+    private String codProduto;
     @Column(name = "DESC_PRODUTO", nullable = false)
     private String descricao;
     @Column(name = "MODELO_PRODUTO", nullable = false)
@@ -55,12 +55,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getCod_produto() {
-        return cod_produto;
+    public String getCodProduto() {
+        return codProduto;
     }
 
-    public void setCod_produto(String cod_produto) {
-        this.cod_produto = cod_produto;
+    public void setCodProduto(String codProduto) {
+        this.codProduto = codProduto;
     }
 
     public String getDescricao() {
@@ -95,10 +95,10 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(Long id, String nome, String cod_produto, String descricao, String modelo, String fabricante) {
+    public Produto(Long id, String nome, String codProduto, String descricao, String modelo, String fabricante) {
         this.id = id;
         this.nome = nome;
-        this.cod_produto = cod_produto;
+        this.codProduto = codProduto;
         this.descricao = descricao;
         this.modelo = modelo;
         this.fabricante = fabricante;
@@ -109,7 +109,7 @@ public class Produto {
         return "Produto{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", cod_produto='" + cod_produto + '\'' +
+                ", codProduto='" + codProduto + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", fabricante='" + fabricante + '\'' +

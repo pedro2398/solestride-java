@@ -1,4 +1,4 @@
-package br.com.fiap.solestride.domain;
+package br.com.fiap.solestride.domain.entity;
 import jakarta.persistence.*;
 //import jakarta.json.bind.annotation.JsonbDateFormat;
 import java.math.BigDecimal;
@@ -13,11 +13,11 @@ public class Requisicao {
     @Column(name = "ID_REQUISICAO")
     private Long id;
     @Column(name = "COD_REQUISICAO", nullable = false)
-    private String cod_requisicao;
+    private String codRequisicao;
     @Column(name = "QTD_REQUISICAO", nullable = false)
     private Integer quantidade;
     @Column(name = "TETO_REQUISICAO", nullable = false)
-    private BigDecimal teto_automatico;
+    private BigDecimal tetoAutomatico;
     //@JsonbDateFormat
     @Column(name = "DT_REQUISICAO", nullable = false)
     private LocalDate data;
@@ -28,7 +28,7 @@ public class Requisicao {
             foreignKey = @ForeignKey(name = "TB_REQUISICAO_FK_PRODUTO"),
             nullable = false
     )
-    private Produto id_req_produto;
+    private Produto produto;
 
     public Long getId() {
         return id;
@@ -38,12 +38,12 @@ public class Requisicao {
         this.id = id;
     }
 
-    public String getCod_requisicao() {
-        return cod_requisicao;
+    public String getCodRequisicao() {
+        return codRequisicao;
     }
 
-    public void setCod_requisicao(String cod_requisicao) {
-        this.cod_requisicao = cod_requisicao;
+    public void setCodRequisicao(String codRequisicao) {
+        this.codRequisicao = codRequisicao;
     }
 
     public Integer getQuantidade() {
@@ -54,12 +54,12 @@ public class Requisicao {
         this.quantidade = quantidade;
     }
 
-    public BigDecimal getTeto_automatico() {
-        return teto_automatico;
+    public BigDecimal getTetoAutomatico() {
+        return tetoAutomatico;
     }
 
-    public void setTeto_automatico(BigDecimal teto_automatico) {
-        this.teto_automatico = teto_automatico;
+    public void setTetoAutomatico(BigDecimal tetoAutomatico) {
+        this.tetoAutomatico = tetoAutomatico;
     }
 
     public LocalDate getData() {
@@ -70,35 +70,35 @@ public class Requisicao {
         this.data = data;
     }
 
-    public Produto getId_req_produto() {
-        return id_req_produto;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setId_req_produto(Produto id_req_produto) {
-        this.id_req_produto = id_req_produto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public Requisicao() {
     }
 
-    public Requisicao(Long id, String cod_requisicao, String cod_produto, Integer quantidade, BigDecimal teto_automatico, LocalDate data, Produto id_req_produto) {
+    public Requisicao(Long id, String codRequisicao, String codProduto, Integer quantidade, BigDecimal tetoAutomatico, LocalDate data, Produto produto) {
         this.id = id;
-        this.cod_requisicao = cod_requisicao;
+        this.codRequisicao = codRequisicao;
         this.quantidade = quantidade;
-        this.teto_automatico = teto_automatico;
+        this.tetoAutomatico = tetoAutomatico;
         this.data = data;
-        this.id_req_produto = id_req_produto;
+        this.produto = produto;
     }
 
     @Override
     public String toString() {
         return "Requisicao{" +
                 "id=" + id +
-                ", cod_requisicao='" + cod_requisicao + '\'' +
+                ", codRequisicao='" + codRequisicao + '\'' +
                 ", quantidade='" + quantidade + '\'' +
-                ", teto_automatico='" + teto_automatico + '\'' +
+                ", tetoAutomatico='" + tetoAutomatico + '\'' +
                 ", data=" + data +
-                ", id_req_produto=" + id_req_produto +
+                ", produto=" + produto +
                 '}';
     }
 }
