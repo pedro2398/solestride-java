@@ -1,4 +1,4 @@
-package br.com.fiap.solestride.domain.entity;
+package br.com.fiap.solestride.domain.entity.pessoa;
 
 import jakarta.persistence.*;
 

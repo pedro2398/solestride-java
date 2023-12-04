@@ -1,7 +1,6 @@
-package br.com.fiap.solestride.domain.entity;
+package br.com.fiap.solestride.domain.entity.pessoa;
 
 import jakarta.persistence.*;
-import org.checkerframework.checker.units.qual.C;
 
 @Entity
 @Table(name = "TB_PESSOA")
@@ -12,7 +11,7 @@ public class Pessoa {
     @SequenceGenerator(name = "SQ_PESSOA", sequenceName = "SQ_PESSOA", allocationSize = 1)
     @Column(name = "ID_PESSOA")
     private Long id;
-    @Column(name = "NOME_PESSOA" ,nullable = false)
+    @Column(name = "NM_PESSOA" ,nullable = false)
     private String nome;
     @Column(name = "CNPJ_PESSOA", nullable = false)
     private String cnpj;

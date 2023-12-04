@@ -1,4 +1,6 @@
 package br.com.fiap.solestride.domain.entity;
+import br.com.fiap.solestride.domain.entity.pessoa.Fabricante;
+import br.com.fiap.solestride.domain.entity.pessoa.Fornecedor;
 import jakarta.persistence.*;
 
 import java.util.LinkedHashSet;
@@ -21,27 +23,20 @@ public class Produto {
     private String descricao;
     @Column(name = "MODELO_PRODUTO", nullable = false)
     private String modelo;
-    @Column(name = "FAB_PRODUTO", nullable = false)
-    private String fabricante;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinTable(
-            name = "TB_PRODUTO_FORNECEDOR",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "ID_PRODUTO",
-                            referencedColumnName = "ID_PRODUTO",
-                            foreignKey = @ForeignKey(name = "FK_PRODUTO_FORNECEDOR")
-                    )
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "ID_FORNECEDOR",
-                            referencedColumnName = "ID_FORNECEDOR",
-                            foreignKey = @ForeignKey(name = "FK_FORNECEDOR_PRODUTO")
-                    )
-            }
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "ID_FABRICANTE",
+            referencedColumnName = "ID_PESSOA",
+            foreignKey = @ForeignKey(name = "FK_PRODUTO_FABRICANTE"),
+            nullable = false
     )
-    private Set<Fornecedor> fornecedores = new LinkedHashSet<>();
+    private Fabricante fabricante;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "ID_FORNECEDOR",
+            referencedColumnName = "ID_PESSOA",
+            foreignKey = @ForeignKey(name = "FK_PRODUTO_FORNECEDOR"),
+            nullable = false
+    )
+    private Fornecedor fornecedores;
 
     public Long getId() {
         return id;
@@ -79,23 +74,26 @@ public class Produto {
         this.modelo = modelo;
     }
 
-    public String getFabricante() {
+    public Fabricante getFabricante() {
         return fabricante;
     }
 
-    public void setFabricante(String fabricante) {
+    public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
     }
 
-    public Produto addFornecedor(Fornecedor forn) {
-        fornecedores.add(forn);
-        return this;
+    public Fornecedor getFornecedores() {
+        return fornecedores;
+    }
+
+    public void setFornecedores(Fornecedor fornecedores) {
+        this.fornecedores = fornecedores;
     }
 
     public Produto() {
     }
 
-    public Produto(Long id, String nome, String codProduto, String descricao, String modelo, String fabricante) {
+    public Produto(Long id, String nome, String codProduto, String descricao, String modelo, Fabricante fabricante) {
         this.id = id;
         this.nome = nome;
         this.codProduto = codProduto;

@@ -25,7 +25,7 @@ public class Requisicao {
     @JoinColumn(
             name = "ID_REQ_PRODUTO",
             referencedColumnName = "ID_PRODUTO",
-            foreignKey = @ForeignKey(name = "TB_REQUISICAO_FK_PRODUTO"),
+            foreignKey = @ForeignKey(name = "FK_REQUISICAO_PRODUTO"),
             nullable = false
     )
     private Produto produto;
