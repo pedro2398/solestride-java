@@ -53,11 +53,7 @@ equipe "Amazing TI."
 
 Para teste de persistência dos dados, entre no arquivo Main (br/com/fiap/solestride/Main.java) e execute-o com Alt+Shift+X.
 
-
-
-<img width="805" alt="image" src="https://github.com/pedro2398/solestride-java/assets/103459126/d958e6db-368f-4656-ae08-e87d8f25bf89">
-<img width="805" alt="image" src="https://github.com/pedro2398/solestride-java/assets/103459126/c5e08d6b-17dd-440d-a362-f860055ba104">
-<img width="805" alt="image"  src="https://github.com/pedro2398/solestride-java/assets/103459126/11ccda8e-c010-4cbe-aea7-58181648ee4a">
+<img width="409" alt="image" src="https://github.com/pedro2398/solestride-java/assets/103459126/d511f1f6-c65d-47fb-8abf-4b2c62afa53d">
 
 Link do pitch: https://www.youtube.com/watch?v=P_jGY1z1zwM
 
