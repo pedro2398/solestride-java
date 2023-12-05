@@ -2,10 +2,6 @@ package br.com.fiap.solestride.domain.entity;
 import br.com.fiap.solestride.domain.entity.pessoa.Fabricante;
 import br.com.fiap.solestride.domain.entity.pessoa.Fornecedor;
 import jakarta.persistence.*;
-
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "TB_PRODUTO", uniqueConstraints = {
         @UniqueConstraint(name = "UK_COD_PRODUTO", columnNames = "COD_PRODUTO")
@@ -36,7 +32,7 @@ public class Produto {
             foreignKey = @ForeignKey(name = "FK_PRODUTO_FORNECEDOR"),
             nullable = false
     )
-    private Fornecedor fornecedores;
+    private Fornecedor fornecedor;
 
     public Long getId() {
         return id;
@@ -83,11 +79,11 @@ public class Produto {
     }
 
     public Fornecedor getFornecedores() {
-        return fornecedores;
+        return fornecedor;
     }
 
     public void setFornecedores(Fornecedor fornecedores) {
-        this.fornecedores = fornecedores;
+        this.fornecedor = fornecedores;
     }
 
     public Produto() {
